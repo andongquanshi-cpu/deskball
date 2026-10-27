@@ -1,0 +1,9 @@
+node_modules/
+*.log
+.env
+.env.*
+!.env.example
+tasks.json
+tasks.json.tmp
+dist/
+coverage/

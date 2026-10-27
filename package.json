@@ -1,0 +1,16 @@
+{
+  "name": "todo-orb",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Local desktop todo orb",
+  "main": "main.cjs",
+  "scripts": {
+    "postinstall": "node node_modules/electron/install.js",
+    "start": "electron .",
+    "test": "node --test --test-isolation=none",
+    "check": "node --check main.cjs && node --check preload.cjs && node --check renderer.js"
+  },
+  "devDependencies": {
+    "electron": "^45.0.0"
+  }
+}

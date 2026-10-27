@@ -1,0 +1,12 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'none'"><title>轻待办</title><link rel="stylesheet" href="style.css"></head>
+<body>
+<button id="ball" aria-label="展开待办，拖动可移动位置" title="点击打开 · 拖动移位"><span class="symbol">✓</span><span id="badge">0</span></button>
+<main id="panel" hidden>
+<header id="handle"><div><span class="eyebrow">A LITTLE PROGRESS</span><h1>轻待办<span> / w老大</span></h1></div><button id="collapse" title="收起" aria-label="收起面板">↗</button></header>
+<section class="summary"><div><span id="remaining">0</span><small>件事，慢慢来。</small></div><p id="encourage">把脑海里的事，先放在这里。</p></section>
+<form id="add-form"><input id="task-input" maxlength="300" placeholder="接下来想做什么？" aria-label="新待办" autocomplete="off"><button type="submit" aria-label="添加待办">＋</button></form>
+<nav aria-label="待办筛选"><button data-filter="all" class="active">全部</button><button data-filter="active">进行中</button><button data-filter="done">已完成</button></nav>
+<div id="list" aria-live="polite"></div><p id="error" role="alert"></p>
+<footer><span>● 仅存于本机</span><div><button id="hide">隐藏</button><button id="quit">退出</button></div></footer>
+</main><script src="renderer.js"></script></body></html>
