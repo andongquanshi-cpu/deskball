@@ -46,6 +46,20 @@ function fit(x, y, width, height) {
   const a = screen.getDisplayNearestPoint({ x, y }).workArea;
   return { x: Math.max(a.x, Math.min(x, a.x + a.width - width)), y: Math.max(a.y, Math.min(y, a.y + a.height - height)), width, height };
 }
+ipcMain.handle('confirm-delete', async (_, id) => {
+  const task = tasks.find(t => t.id === id);
+  if (!task) return false;
+  const result = await dialog.showMessageBox(win, {
+    type: 'warning',
+    buttons: ['取消', '删除整组'],
+    defaultId: 0,
+    cancelId: 0,
+    noLink: true,
+    message: `删除“${task.text}”及其 ${task.children?.length || 0} 个子任务？`,
+    detail: '此操作无法撤销。'
+  });
+  return result.response === 1;
+});
 ipcMain.handle('load', () => ({ tasks, readFailed }));
 ipcMain.handle('save', (_, next) => {
   if (readFailed) throw new Error('原数据读取失败，已阻止覆盖');
